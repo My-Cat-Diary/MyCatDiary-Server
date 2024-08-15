@@ -5,6 +5,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { CatResDTO } from 'src/cat/dto/cat.dto';
 
 export class UserInfoDTO {
   @IsString()
@@ -41,6 +42,11 @@ export class SignInUserDTO {
 
   @IsString()
   password: string;
+}
+
+export class UserAndCatInfoDTO {
+  user: UserInfoDTO;
+  cats: CatResDTO[];
 }
 
 export class UserTokenDTO {
