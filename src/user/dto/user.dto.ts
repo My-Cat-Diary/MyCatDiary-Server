@@ -8,6 +8,9 @@ import {
 import { CatResDTO } from 'src/cat/dto/cat.dto';
 
 export class UserInfoDTO {
+  @IsNumber()
+  user_id: number;
+
   @IsString()
   id: string;
 

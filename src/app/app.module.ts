@@ -7,6 +7,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configulation from 'src/config/configulation';
 import { UserEntity } from 'src/user/entity/user.entity';
 import { CatEntity } from 'src/cat/entity/cat.entity';
+import { CommunityEntity } from 'src/community/entity/community.entity';
+import { CommunityModule } from 'src/community/community.module';
 
 @Module({
   imports: [
@@ -24,13 +26,14 @@ import { CatEntity } from 'src/cat/entity/cat.entity';
         username: confiService.get('database.user'),
         password: confiService.get('database.password'),
         database: confiService.get('database.name'),
-        entities: [UserEntity, CatEntity],
-        synchronize: false,
+        entities: [UserEntity, CatEntity, CommunityEntity],
+        synchronize: true,
       }),
     }),
     AuthModule,
     UserModule,
     CatModule,
+    CommunityModule,
   ],
 })
 export class AppModule {}

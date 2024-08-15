@@ -49,7 +49,10 @@ export class CommunityRepository {
 
     await this.communityRepository.update(
       { id, user },
-      { ...editCommunityDTO, updatedAt: currentTime },
+      {
+        ...editCommunityDTO,
+        updatedAt: currentTime,
+      },
     );
 
     return await this.communityRepository.findOneBy({

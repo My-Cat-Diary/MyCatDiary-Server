@@ -66,7 +66,6 @@ export class CommunityController {
       editCommunityDTO,
     );
 
-    if (community)
-      return { status: 200, message: 'success edit the community' };
+    if (community) return community;
   }
 }

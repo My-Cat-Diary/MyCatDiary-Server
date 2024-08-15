@@ -19,6 +19,7 @@ export class UserService {
       return {
         user: {
           id: owner.id,
+          user_id: owner.userId,
           username: owner.username,
         },
         cats: cats.map((cat) => ({

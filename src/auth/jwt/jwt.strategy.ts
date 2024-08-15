@@ -8,6 +8,7 @@ import { Payload } from './jwt.payload';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly userRepository: UserRepository) {
+    console.log(process.env.JWT_SECRET_KEY);
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreElements: true,

@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Category } from './type/community.type';
 import { UserEntity } from 'src/user/entity/user.entity';
 
@@ -22,6 +28,7 @@ export class CommunityEntity {
   @Column({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToOne(() => UserEntity, (user) => user.communityList)
+  @ManyToOne(() => UserEntity, (user) => user.communityList, { eager: true })
+  @JoinColumn([{ name: 'userId', referencedColumnName: 'userId' }])
   user: UserEntity;
 }

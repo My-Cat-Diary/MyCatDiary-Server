@@ -10,19 +10,16 @@ import {
   EditCommunityDTO,
 } from './dto/community.dto';
 import { UserEntity } from 'src/user/entity/user.entity';
-import { UserRepository } from 'src/user/user.repository';
 
 @Injectable()
 export class CommunityService {
-  constructor(
-    private readonly communityRepository: CommunityRepository,
-    private readonly userRepository: UserRepository,
-  ) {}
+  constructor(private readonly communityRepository: CommunityRepository) {}
 
   async createCommunity(
     createCommunityDTO: CreateCommunityDTO,
     user: UserEntity,
   ): Promise<void> {
+    console.log(user);
     const community = await this.communityRepository.createCommunity(
       createCommunityDTO,
       user,
@@ -42,13 +39,18 @@ export class CommunityService {
         category: community.category,
         created_at: community.createdAt,
         updated_at: community.updatedAt,
-        user: community.user,
+        user: {
+          id: community.user.id,
+          user_id: community.user.userId,
+          username: community.user.username,
+        },
       }),
     );
   }
 
   async fetchCommunityById(id: number): Promise<CommunityResDTO> {
     const community = await this.communityRepository.fetchCommunityById(id);
+    console.log(community.user);
 
     if (!community) throw new NotFoundException();
     else {
@@ -59,7 +61,11 @@ export class CommunityService {
         category: community.category,
         created_at: community.createdAt,
         updated_at: community.updatedAt,
-        user: community.user,
+        user: {
+          id: community.user.id,
+          user_id: community.user.userId,
+          username: community.user.username,
+        },
       };
     }
   }
@@ -84,7 +90,11 @@ export class CommunityService {
         category: community.category,
         created_at: community.createdAt,
         updated_at: community.updatedAt,
-        user: community.user,
+        user: {
+          id: community.user.id,
+          user_id: community.user.userId,
+          username: community.user.username,
+        },
       };
   }
 }

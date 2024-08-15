@@ -1,6 +1,5 @@
 import { IsEnum, IsString } from 'class-validator';
 import { Category } from '../entity/type/community.type';
-import { UserEntity } from 'src/user/entity/user.entity';
 import { UserInfoDTO } from 'src/user/dto/user.dto';
 
 export class CreateCommunityDTO {
@@ -20,10 +19,6 @@ export class EditCommunityDTO {
   content: string;
 
   category: Category;
-
-  created_at: Date;
-
-  user: UserInfoDTO;
 }
 
 export class CommunityResDTO {
