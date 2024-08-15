@@ -36,4 +36,10 @@ export class UserRepository {
 
     return user;
   }
+
+  async getUserByUserId(userId: number): Promise<UserEntity> {
+    const user = await this.userRepository.findOneBy({ userId });
+
+    return user;
+  }
 }

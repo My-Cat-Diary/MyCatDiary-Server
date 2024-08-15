@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { CommunityEntity } from 'src/community/entity/community.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -13,4 +14,7 @@ export class UserEntity {
 
   @Column({ nullable: false })
   password: string;
+
+  @OneToMany(() => CommunityEntity, (community) => community.user)
+  communityList: CommunityEntity[];
 }
