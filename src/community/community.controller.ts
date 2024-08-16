@@ -10,12 +10,14 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
+  CommunityDetailResDTO,
   CommunityResDTO,
   CreateCommunityDTO,
   EditCommunityDTO,
 } from './dto/community.dto';
 import { CommunityService } from './community.service';
 import { UserEntity } from 'src/user/entity/user.entity';
+import { CreateCommentDTO } from 'src/comment/dto/comment.dto';
 
 @Controller('community')
 export class CommunityController {
@@ -47,7 +49,7 @@ export class CommunityController {
   @Get('/:community_id')
   async fetchCommunityById(
     @Param('community_id') id: number,
-  ): Promise<CommunityResDTO> {
+  ): Promise<CommunityDetailResDTO> {
     const community = await this.communityService.fetchCommunityById(id);
 
     return community;
@@ -67,5 +69,21 @@ export class CommunityController {
     );
 
     if (community) return community;
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Post('/:community_id/comment')
+  async createComment(
+    @Req() req,
+    @Param('community_id') id: number,
+    @Body() createCommentDTO: CreateCommentDTO,
+  ) {
+    await this.communityService.createComment(
+      id,
+      createCommentDTO,
+      req.user as UserEntity,
+    );
+
+    return { statusCode: '200', message: 'success create comment' };
   }
 }

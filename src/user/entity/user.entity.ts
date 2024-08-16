@@ -1,3 +1,4 @@
+import { CommentEntity } from 'src/comment/entity/comment.entity';
 import { CommunityEntity } from 'src/community/entity/community.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -17,4 +18,7 @@ export class UserEntity {
 
   @OneToMany(() => CommunityEntity, (community) => community.user)
   communityList: CommunityEntity[];
+
+  @OneToMany(() => CommentEntity, (comment) => comment.user)
+  commentList: CommentEntity[];
 }

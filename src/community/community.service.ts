@@ -1,25 +1,31 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
 import { CommunityRepository } from './community.repository';
 import {
+  CommunityDetailResDTO,
   CommunityResDTO,
   CreateCommunityDTO,
   EditCommunityDTO,
 } from './dto/community.dto';
 import { UserEntity } from 'src/user/entity/user.entity';
+import { CommentRepository } from 'src/comment/comment.repository';
+import { CommentResDTO, CreateCommentDTO } from 'src/comment/dto/comment.dto';
 
 @Injectable()
 export class CommunityService {
-  constructor(private readonly communityRepository: CommunityRepository) {}
+  constructor(
+    private readonly communityRepository: CommunityRepository,
+    private readonly commentRepository: CommentRepository,
+  ) {}
 
   async createCommunity(
     createCommunityDTO: CreateCommunityDTO,
     user: UserEntity,
   ): Promise<void> {
-    console.log(user);
     const community = await this.communityRepository.createCommunity(
       createCommunityDTO,
       user,
@@ -48,9 +54,9 @@ export class CommunityService {
     );
   }
 
-  async fetchCommunityById(id: number): Promise<CommunityResDTO> {
+  async fetchCommunityById(id: number): Promise<CommunityDetailResDTO> {
     const community = await this.communityRepository.fetchCommunityById(id);
-    console.log(community.user);
+    const commentList = await this.commentRepository.fetchCommentList(id);
 
     if (!community) throw new NotFoundException();
     else {
@@ -66,6 +72,20 @@ export class CommunityService {
           user_id: community.user.userId,
           username: community.user.username,
         },
+        comment_list: commentList.map(
+          (comment): CommentResDTO => ({
+            id: comment.id,
+            content: comment.content,
+            created_at: comment.createdAt,
+            updated_at: comment.updatedAt,
+            community_id: comment.communityId,
+            user: {
+              user_id: comment.user.userId,
+              id: comment.user.id,
+              username: comment.user.username,
+            },
+          }),
+        ),
       };
     }
   }
@@ -96,5 +116,19 @@ export class CommunityService {
           username: community.user.username,
         },
       };
+  }
+
+  async createComment(
+    communityId: number,
+    createCommentDTO: CreateCommentDTO,
+    user: UserEntity,
+  ): Promise<void> {
+    const comment = await this.commentRepository.createComment(
+      communityId,
+      createCommentDTO,
+      user,
+    );
+
+    if (!comment) throw new BadRequestException();
   }
 }

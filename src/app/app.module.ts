@@ -9,6 +9,8 @@ import { UserEntity } from 'src/user/entity/user.entity';
 import { CatEntity } from 'src/cat/entity/cat.entity';
 import { CommunityEntity } from 'src/community/entity/community.entity';
 import { CommunityModule } from 'src/community/community.module';
+import { CommentModule } from 'src/comment/comment.module';
+import { CommentEntity } from 'src/comment/entity/comment.entity';
 
 @Module({
   imports: [
@@ -26,7 +28,7 @@ import { CommunityModule } from 'src/community/community.module';
         username: confiService.get('database.user'),
         password: confiService.get('database.password'),
         database: confiService.get('database.name'),
-        entities: [UserEntity, CatEntity, CommunityEntity],
+        entities: [UserEntity, CatEntity, CommunityEntity, CommentEntity],
         synchronize: true,
       }),
     }),
@@ -34,6 +36,7 @@ import { CommunityModule } from 'src/community/community.module';
     UserModule,
     CatModule,
     CommunityModule,
+    CommentModule,
   ],
 })
 export class AppModule {}
