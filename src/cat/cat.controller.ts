@@ -52,7 +52,5 @@ export class CatController {
   @Delete('/:id')
   async deleteMyCat(@Param('id') id: number, @Req() req) {
     await this.catService.deleteMyCat(id, req.user as UserEntity);
-
-    return { statusCode: 204, message: 'success delete cat' };
   }
 }

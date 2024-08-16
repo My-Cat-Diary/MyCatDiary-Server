@@ -11,6 +11,10 @@ import { CommunityEntity } from 'src/community/entity/community.entity';
 import { CommunityModule } from 'src/community/community.module';
 import { CommentModule } from 'src/comment/comment.module';
 import { CommentEntity } from 'src/comment/entity/comment.entity';
+import { ScheduleModule } from 'src/schedule/schedule.module';
+import { ScheduleEntity } from 'src/schedule/entity/schedule.entity';
+import { DiaryEntity } from 'src/diary/entity/diary.entity';
+import { DiaryModule } from 'src/diary/diary.module';
 
 @Module({
   imports: [
@@ -28,7 +32,14 @@ import { CommentEntity } from 'src/comment/entity/comment.entity';
         username: confiService.get('database.user'),
         password: confiService.get('database.password'),
         database: confiService.get('database.name'),
-        entities: [UserEntity, CatEntity, CommunityEntity, CommentEntity],
+        entities: [
+          UserEntity,
+          CatEntity,
+          CommunityEntity,
+          CommentEntity,
+          ScheduleEntity,
+          DiaryEntity,
+        ],
         synchronize: true,
       }),
     }),
@@ -37,6 +48,8 @@ import { CommentEntity } from 'src/comment/entity/comment.entity';
     CatModule,
     CommunityModule,
     CommentModule,
+    ScheduleModule,
+    DiaryModule,
   ],
 })
 export class AppModule {}

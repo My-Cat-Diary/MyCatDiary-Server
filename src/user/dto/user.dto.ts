@@ -1,5 +1,6 @@
 import {
   IsNumber,
+  IsObject,
   IsString,
   Matches,
   MaxLength,
@@ -48,7 +49,10 @@ export class SignInUserDTO {
 }
 
 export class UserAndCatInfoDTO {
+  @IsObject()
   user: UserInfoDTO;
+
+  @IsObject()
   cats: CatResDTO[];
 }
 

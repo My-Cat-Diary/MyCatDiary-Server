@@ -1,4 +1,5 @@
 import {
+  IsDate,
   IsEnum,
   IsNotEmpty,
   IsNumber,
@@ -21,17 +22,23 @@ export class CreateCatDTO {
   @IsNumber()
   age: number;
 
+  @IsDate()
   birth_day: Date;
 }
 
 export class CatResDTO {
+  @IsNumber()
   cat_id: number;
 
+  @IsString()
   name: string;
 
+  @IsEnum(SexType)
   sex: SexType;
 
+  @IsNumber()
   age: number;
 
+  @IsDate()
   birth_day: Date;
 }
