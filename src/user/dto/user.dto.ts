@@ -17,6 +17,9 @@ export class UserInfoDTO {
 
   @IsString()
   username: string;
+
+  @IsString()
+  image_url: string;
 }
 
 export class CreateUserDTO {
@@ -38,6 +41,9 @@ export class CreateUserDTO {
       '패스워드는 8~20자리이며 최소 하나 이상의 영문자, 최소 하나 이상의 숫자, 최소 하나 이상의 특수문자를 입력해야 합니다.',
   })
   password: string;
+
+  @IsString()
+  image_url?: string;
 }
 
 export class SignInUserDTO {

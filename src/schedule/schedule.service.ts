@@ -38,6 +38,7 @@ export class ScheduleService {
 
         return {
           id: schedule.id,
+          image_urls: schedule.imageUrls,
           title: schedule.title,
           content: schedule.content,
           day: schedule.day,
@@ -60,6 +61,7 @@ export class ScheduleService {
 
     return {
       id: schedule.id,
+      image_urls: schedule.imageUrls,
       title: schedule.title,
       content: schedule.content,
       day: schedule.day,
@@ -69,6 +71,7 @@ export class ScheduleService {
         age: cat.age,
         sex: cat.sex,
         birth_day: cat.birthDay,
+        image_url: cat.imageUrl,
       },
     };
   }

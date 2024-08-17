@@ -3,6 +3,9 @@ import { CatResDTO } from 'src/cat/dto/cat.dto';
 
 export class CreateScheduleDTO {
   @IsString()
+  image_urls: string[];
+
+  @IsString()
   title: string;
 
   @IsString()
@@ -18,6 +21,9 @@ export class CreateScheduleDTO {
 export class ScheduleResDTO {
   @IsNumber()
   id: number;
+
+  @IsString()
+  image_urls: string[];
 
   @IsString()
   title: string;

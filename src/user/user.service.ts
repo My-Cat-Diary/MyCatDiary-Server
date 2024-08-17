@@ -18,6 +18,7 @@ export class UserService {
     if (owner) {
       return {
         user: {
+          image_url: owner.imageUrl,
           id: owner.id,
           user_id: owner.userId,
           username: owner.username,
@@ -28,6 +29,7 @@ export class UserService {
           age: cat.age,
           sex: cat.sex,
           birth_day: cat.birthDay,
+          image_url: cat.imageUrl,
         })),
       };
     } else {

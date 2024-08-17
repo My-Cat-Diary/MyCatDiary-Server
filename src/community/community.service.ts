@@ -49,6 +49,7 @@ export class CommunityService {
           id: community.user.id,
           user_id: community.user.userId,
           username: community.user.username,
+          image_url: community.user.imageUrl,
         },
       }),
     );
@@ -65,12 +66,14 @@ export class CommunityService {
         title: community.title,
         content: community.content,
         category: community.category,
+        image_urls: community.imageUrls,
         created_at: community.createdAt,
         updated_at: community.updatedAt,
         user: {
           id: community.user.id,
           user_id: community.user.userId,
           username: community.user.username,
+          image_url: community.user.imageUrl,
         },
         comment_list: commentList.map(
           (comment): CommentResDTO => ({
@@ -83,6 +86,7 @@ export class CommunityService {
               user_id: comment.user.userId,
               id: comment.user.id,
               username: comment.user.username,
+              image_url: comment.user.imageUrl,
             },
           }),
         ),
@@ -114,6 +118,7 @@ export class CommunityService {
           id: community.user.id,
           user_id: community.user.userId,
           username: community.user.username,
+          image_url: community.user.imageUrl,
         },
       };
   }

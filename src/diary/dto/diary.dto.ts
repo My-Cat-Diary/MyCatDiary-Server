@@ -7,6 +7,9 @@ export class CreateDiaryDTO {
   @IsString()
   content: string;
 
+  @IsString()
+  image_urls?: string[];
+
   @IsDate()
   day: Date;
 }
@@ -20,6 +23,9 @@ export class DiaryResDTO {
 
   @IsString()
   content: string;
+
+  @IsString()
+  image_urls: string[];
 
   @IsDate()
   day: Date;

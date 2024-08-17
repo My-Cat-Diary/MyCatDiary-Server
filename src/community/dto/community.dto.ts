@@ -12,6 +12,9 @@ import { CommentResDTO } from 'src/comment/dto/comment.dto';
 
 export class CreateCommunityDTO {
   @IsString()
+  image_urls?: string[];
+
+  @IsString()
   title: string;
 
   @IsString()
@@ -22,6 +25,9 @@ export class CreateCommunityDTO {
 }
 
 export class EditCommunityDTO {
+  @IsString()
+  image_urls?: string[];
+
   @IsString()
   title: string;
 
@@ -41,6 +47,9 @@ export class CommunityDetailResDTO {
 
   @IsString()
   content: string;
+
+  @IsString()
+  image_urls: string[];
 
   @IsObject()
   category: Category;

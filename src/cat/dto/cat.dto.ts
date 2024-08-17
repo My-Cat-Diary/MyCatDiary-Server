@@ -24,6 +24,9 @@ export class CreateCatDTO {
 
   @IsDate()
   birth_day: Date;
+
+  @IsString()
+  image_url?: string;
 }
 
 export class CatResDTO {
@@ -41,4 +44,7 @@ export class CatResDTO {
 
   @IsDate()
   birth_day: Date;
+
+  @IsString()
+  image_url: string;
 }

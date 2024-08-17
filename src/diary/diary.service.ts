@@ -30,6 +30,7 @@ export class DiaryService {
       id: diary.id,
       title: diary.title,
       content: diary.content,
+      image_urls: diary.imageUrls,
       day: diary.day,
     }));
   }
@@ -43,6 +44,7 @@ export class DiaryService {
       id: diary.id,
       title: diary.title,
       content: diary.content,
+      image_urls: diary.imageUrls,
       day: diary.day,
     };
   }

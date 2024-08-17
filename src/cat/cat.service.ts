@@ -28,6 +28,7 @@ export class CatService {
         age: cat.age,
         sex: cat.sex,
         birth_day: cat.birthDay,
+        image_url: cat.imageUrl,
       };
   }
 
@@ -41,6 +42,7 @@ export class CatService {
         age: cat.age,
         sex: cat.sex,
         birth_day: cat.birthDay,
+        image_url: cat.imageUrl,
       }),
     );
   }

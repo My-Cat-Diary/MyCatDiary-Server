@@ -19,6 +19,9 @@ export class CommunityEntity {
   @Column()
   content: string;
 
+  @Column({ name: 'image_urls' })
+  imageUrls: string[];
+
   @Column({ default: 'ETC' })
   category: Category;
 

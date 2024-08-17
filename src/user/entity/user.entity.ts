@@ -13,6 +13,9 @@ export class UserEntity {
   @Column({ unique: true, nullable: false })
   username: string;
 
+  @Column({ name: 'image_url', nullable: true })
+  imageUrl: string;
+
   @Column({ nullable: false })
   password: string;
 

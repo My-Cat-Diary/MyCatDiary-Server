@@ -6,6 +6,9 @@ export class CatEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ name: 'image_url' })
+  imageUrl: string;
+
   @Column({ nullable: false })
   name: string;
 

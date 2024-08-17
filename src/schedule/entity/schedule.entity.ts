@@ -11,6 +11,9 @@ export class ScheduleEntity {
   @Column()
   content: string;
 
+  @Column({ name: 'image_urls' })
+  imageUrls: string[];
+
   @Column()
   day: Date;
 
