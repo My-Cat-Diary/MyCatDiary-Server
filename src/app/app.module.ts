@@ -15,6 +15,8 @@ import { ScheduleModule } from 'src/schedule/schedule.module';
 import { ScheduleEntity } from 'src/schedule/entity/schedule.entity';
 import { DiaryEntity } from 'src/diary/entity/diary.entity';
 import { DiaryModule } from 'src/diary/diary.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { AssetModule } from 'src/asset/asset.module';
 
 @Module({
   imports: [
@@ -43,7 +45,11 @@ import { DiaryModule } from 'src/diary/diary.module';
         synchronize: true,
       }),
     }),
+    MulterModule.register({
+      dest: '/public',
+    }),
     AuthModule,
+    AssetModule,
     UserModule,
     CatModule,
     CommunityModule,

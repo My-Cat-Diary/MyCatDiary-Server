@@ -57,6 +57,7 @@ export class CommunityDetailResDTO {
   @IsArray()
   comment_list: CommentResDTO[];
 }
+
 export class CommunityResDTO {
   @IsNumber()
   community_id: number;
