@@ -19,6 +19,7 @@ export class CommunityRepository {
     const currentTime = new Date();
     const community = this.communityRepository.create({
       ...createCommunityDTO,
+      imageUrls: JSON.stringify(createCommunityDTO.image_urls),
       createdAt: currentTime,
       updatedAt: currentTime,
       user: user,

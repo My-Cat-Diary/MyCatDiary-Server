@@ -20,7 +20,7 @@ export class CommunityEntity {
   content: string;
 
   @Column({ name: 'image_urls' })
-  imageUrls: string[];
+  imageUrls: string;
 
   @Column({ default: 'ETC' })
   category: Category;

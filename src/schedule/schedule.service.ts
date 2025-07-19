@@ -20,7 +20,7 @@ export class ScheduleService {
     createScheduleDTO: CreateScheduleDTO,
     user: UserEntity,
   ): Promise<void> {
-    const schedule = await this.scheduleRepository.createScheduel(
+    const schedule = await this.scheduleRepository.createSchedule(
       createScheduleDTO,
       user,
     );
@@ -38,7 +38,7 @@ export class ScheduleService {
 
         return {
           id: schedule.id,
-          image_urls: schedule.imageUrls,
+          image_urls: JSON.parse(schedule.imageUrls) as string[],
           title: schedule.title,
           content: schedule.content,
           day: schedule.day,
@@ -61,7 +61,7 @@ export class ScheduleService {
 
     return {
       id: schedule.id,
-      image_urls: schedule.imageUrls,
+      image_urls: JSON.parse(schedule.imageUrls) as string[],
       title: schedule.title,
       content: schedule.content,
       day: schedule.day,

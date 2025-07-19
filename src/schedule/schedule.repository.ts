@@ -12,12 +12,13 @@ export class ScheduleRepository {
     private readonly scheduleRepository: Repository<ScheduleEntity>,
   ) {}
 
-  async createScheduel(
+  async createSchedule(
     createScheduleDTO: CreateScheduleDTO,
     user: UserEntity,
   ): Promise<ScheduleEntity> {
     const schedule = this.scheduleRepository.create({
       ...createScheduleDTO,
+      imageUrls: JSON.stringify(createScheduleDTO.image_urls),
       userId: user.userId,
       catId: createScheduleDTO.cat_id,
     });

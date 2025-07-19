@@ -12,7 +12,7 @@ export class DiaryEntity {
   content: string;
 
   @Column({ name: 'image_urls' })
-  imageUrls: string[];
+  imageUrls: string;
 
   @Column()
   day: Date;

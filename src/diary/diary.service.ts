@@ -30,7 +30,7 @@ export class DiaryService {
       id: diary.id,
       title: diary.title,
       content: diary.content,
-      image_urls: diary.imageUrls,
+      image_urls: JSON.parse(diary.imageUrls) as string[],
       day: diary.day,
     }));
   }
@@ -44,7 +44,7 @@ export class DiaryService {
       id: diary.id,
       title: diary.title,
       content: diary.content,
-      image_urls: diary.imageUrls,
+      image_urls: JSON.parse(diary.imageUrls) as string[],
       day: diary.day,
     };
   }

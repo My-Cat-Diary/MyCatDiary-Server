@@ -15,7 +15,11 @@ export class DiaryRepository {
     createDiaryDTO: CreateDiaryDTO,
     userId: number,
   ): Promise<DiaryEntity> {
-    const diary = this.diaryRepository.create({ ...createDiaryDTO, userId });
+    const diary = this.diaryRepository.create({
+      ...createDiaryDTO,
+      imageUrls: JSON.stringify(createDiaryDTO.image_urls),
+      userId,
+    });
 
     await this.diaryRepository.save(diary);
 

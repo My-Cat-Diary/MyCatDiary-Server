@@ -66,7 +66,7 @@ export class CommunityService {
         title: community.title,
         content: community.content,
         category: community.category,
-        image_urls: community.imageUrls,
+        image_urls: JSON.parse(community.imageUrls) as string[],
         created_at: community.createdAt,
         updated_at: community.updatedAt,
         user: {

@@ -12,7 +12,7 @@ export class ScheduleEntity {
   content: string;
 
   @Column({ name: 'image_urls' })
-  imageUrls: string[];
+  imageUrls: string;
 
   @Column()
   day: Date;
